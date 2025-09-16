@@ -81,4 +81,11 @@ def editar_cliente(request, pk):
 
     return render(request, "tienda/editar_cliente.html", {"form": form, "cliente": cliente})
 
+def eliminar_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
 
+    if request.method == "POST":
+        producto.delete()
+        return redirect("tienda:lista_productos")  # O el nombre correcto en tu urls.py
+
+    return render(request, "tienda/eliminar_producto.html", {"producto": producto})
