@@ -1,5 +1,6 @@
 from django import forms
-from .models import Producto,Cliente
+from django.forms import inlineformset_factory
+from .models import Producto,Cliente,Pedido, PedidoItem
 
 class ProductoForm(forms.ModelForm):
     class Meta:
@@ -35,3 +36,31 @@ class ClienteForm(forms.ModelForm):
                 "class": "form-control"
             }),
         }
+
+class PedidoSimpleForm (forms.ModelForm)
+    class Meta:
+        model= Pedido
+        fields= ['cliente', 'estado']
+
+class PedidoItemForm (forms.ModelForm)
+    class Meta:
+        model= PedidoItem
+        fields= ['producto', 'cantidad','precio_unitario']
+        widgets={
+            "cantidad":forms.NumberInput(attrs={
+                "min":1,
+                "step":"1"
+            }),
+            "precio_unitario": forms.NumberInput(attrs={
+                "step": "0.01"
+                "min":0
+            })
+        }
+
+PedidoItemFormSet = inlineformset_factory(
+    parent_model=pedido,
+    model=PedidoItem,
+    form=PedidoItemForm,
+    extra= 1,
+    can_delete=True,
+)
