@@ -36,10 +36,10 @@ class Pedido(models.Model):
         return f"Pedido #{self.pk} - {self.cliente.nombre} ({self.estado})"
 
 class PedidoItem(models.Model):
-    pedido= models.ForeignKey(Pedido, on_delete=models,CASCADE, related_name="items")
-    producto=models.ForeignKey(Producto, on_delete=models,CASCADE, related_name="items")
-    cantidad= models.PositiveIntegerField(default=1)
-    precio_unitario=models.DecimalField(max_digits=10,decimal_places=2)
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name="items")
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="items")
+    cantidad = models.PositiveIntegerField(default=1)
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
-        unique_together= ("pedido","producto")
+        unique_together = ("pedido", "producto")

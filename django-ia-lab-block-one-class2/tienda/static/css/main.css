@@ -64,3 +64,33 @@ hr {
     text-decoration: none;
 }
 
+.tabla{
+    width: 100%;
+    border-collapse: collapse;
+}
+.encabezado-tabla{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.fila-nombre{
+    text-align: left;
+    padding: 8px;
+}
+.fila{
+    text-align:right;
+    padding: 8px;
+}
+.pie-tabla{
+    font-weight: bold;
+    text-align: right;
+    padding: 8px;
+}
+
+.valores-pie{
+    font-weight: bolder;
+    text-align: right;
+    font-size: 1.3rem;
+    padding: 8px;
+}

@@ -4,18 +4,18 @@
 
 {% block content %}
 <h1>Pedidos</h1>
-<p><a href="{% url'tienda:crear_pedido_items'%}" class="btn">Nuevo pedido</a></p>
+<p><a href="{% url 'tienda:crear_pedido_items' %}" class="btn">Nuevo pedido</a></p>  <!-- Corregido el uso de url -->
 <ul>
     {% for ped in pedidos %}
     <li>
         <a href="{% url 'tienda:detalle_pedido' ped.pk %}">
             Pedido {{ ped.id }}
         </a>
-            - Cliente: {{ ped.cliente.nombre }}
-            - Estado: {{ ped.estado }}
-            - Fecha: {{ ped.fecha|date:"d/m/Y" }}
-            - Productos: {{ ped.productos.count }}
-            -Total: ${{ped.total_precio}}
+        - Cliente: {{ ped.cliente.nombre }}
+        - Estado: {{ ped.estado }}
+        - Fecha: {{ ped.fecha|date:"d/m/Y" }}
+        - Productos: {{ ped.productos.count }}
+        - Total: ${{ ped.total_precio }}
     </li>
     {% empty %}
     <li>No hay pedidos registrados.</li>
