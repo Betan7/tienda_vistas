@@ -7,6 +7,44 @@
 <p><strong>Cliente:</strong>{{ pedido.cliente.nombre }}</p>
 <p><strong>Estado:</strong>{{ pedido.estado }}</p>
 <h3>Productos</h3>
+
+{% if items %}
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th class="encabezado-tabla">Producto</th>
+                <th class="encabezado-tabla">Cantidad</th>
+                <th class="encabezado-tabla">Precio</th>
+                <th class="encabezado-tabla">Subtotal</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for it in items% }
+            <tr>
+                <td class="fila">{{it.nombre}}</td>
+                <td class="fila">{{it.cantidad}}</td>
+                <td class="fila">{{it.precio_unitario|floatformat:2}}</td>
+                <td class="fila">{{it.line_total|floatformat:2}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4"> Este pedido no tiene</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{%end if%}
+
+
+{% end  %}
+
+
+
+
+
 <ul>
     {% for pr in pedido.productos.all %}
     <li>
